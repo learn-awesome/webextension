@@ -3,10 +3,8 @@
   "version": "0.1",
   "description": "Best learning resources from the web",
   "manifest_version": 2,
-  "app": {
-    "background": {
-      "scripts": ["contextMenu.js"]
-    }
+  "background": {
+    "scripts": ["contextMenu.js"]
   },
 
   "browser_action": {
@@ -27,5 +25,10 @@
     "128": "images/get_started128.png"
   },
 
-  "permissions": ["activeTab", "contextMenus"]
+  "permissions": [
+    "activeTab",
+    "contextMenus",
+    "tabs",
+    "https://learnawesome.org/flash_cards/new"
+  ]
 }

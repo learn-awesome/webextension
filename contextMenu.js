@@ -7,14 +7,18 @@ var CONTEXT_MENU_CONTENTS = {
 function setUpContextMenus() {
   CONTEXT_MENU_CONTENTS.forSelection.forEach(function (commandId) {
     chrome.contextMenus.create({
-      type: "separator",
-      id: 'flashCardSeparator',
-      contexts: ['selection']
-    });
-    chrome.contextMenus.create({
-      title: commandId,
-      id: commandId,
-      contexts: ['selection']
+      type: "normal",
+      title: commandId + ' "%s"',
+      id: 'flashCard',
+      contexts: ['selection'],
+      onclick: function (info, tab) {
+        var pageUrl = info.pageUrl;
+        var answer = info.selectionText;
+        var baseUrl = "https://learnawesome.org/flash_cards/new?";
+        var question = 'dummy question text';
+        var targetUrl = `${baseUrl}answer=${answer}&question=${question}&url=${pageUrl}`;
+        chrome.tabs.create({ url: targetUrl });
+      }
     });
   });
 }
