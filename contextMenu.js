@@ -8,7 +8,7 @@ function setUpContextMenus() {
   CONTEXT_MENU_CONTENTS.forSelection.forEach(function (commandId) {
     chrome.contextMenus.create({
       type: "separator",
-      id: 'sep1',
+      id: 'flashCardSeparator',
       contexts: ['selection']
     });
     chrome.contextMenus.create({
