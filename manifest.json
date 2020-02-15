@@ -1,8 +1,8 @@
 {
-	"name": "LearnAwesome",
-	"version": "0.1",
-	"description": "Best learning resources from the web",
-	"manifest_version": 2,
+  "name": "LearnAwesome",
+  "version": "0.1",
+  "description": "Best learning resources from the web",
+  "manifest_version": 2,
 
   "browser_action": {
     "default_popup": "popup.html",
@@ -22,7 +22,5 @@
     "128": "images/get_started128.png"
   },
 
-	"permissions": [
-		"activeTab"
-	]
+  "permissions": ["activeTab", "contextMenus"]
 }
