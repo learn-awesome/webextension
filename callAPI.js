@@ -16,6 +16,6 @@ var la_targetUrl = `${la_baseUrl}${la_queryString}`;
 
 // call the api from new tab
 var la_a = document.createElement('a');
-la_a.href = targetUrl;
+la_a.href = la_targetUrl;
 la_a.target = "_blank";
 la_a.click();

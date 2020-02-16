@@ -1,11 +1,11 @@
-var CONTEXT_MENU_CONTENTS = {
+var LA_CONTEXT_MENU_CONTENTS = {
   forSelection: [
     'Save as Flashcard on LearnAwesome.org'
   ]
 };
 
-function setUpContextMenus() {
-  CONTEXT_MENU_CONTENTS.forSelection.forEach(function (commandId) {
+function la_setUpContextMenus() {
+  LA_CONTEXT_MENU_CONTENTS.forSelection.forEach(function (commandId) {
     chrome.contextMenus.create({
       type: "normal",
       title: commandId,
@@ -26,4 +26,4 @@ function setUpContextMenus() {
   });
 }
 
-setUpContextMenus();
+la_setUpContextMenus();
