@@ -1,18 +1,21 @@
-var baseUrl = "https://learnawesome.org/flash_cards/new?";
+var la_baseUrl = "https://learnawesome.org/flash_cards/new?";
 
-var selectedValue = window.getSelection().anchorNode.wholeText;
-var parentSelection = window.getSelection().getRangeAt(0).startContainer.parentNode.previousSibling.innerText;
+var la_selectedValue = window.getSelection().anchorNode.wholeText;
+var la_parentSelection = window.getSelection().getRangeAt(0).startContainer.parentNode.previousSibling.innerText;
 
-if (parentSelection) {
-  params.question = parentSelection + ' ' + selectedValue;
+if (la_parentSelection) {
+  params.question = la_parentSelection + ' ' + la_selectedValue;
 } else {
-  params.question = selectedValue;
+  params.question = la_selectedValue;
 }
 
-var queryString = Object.keys(params).map((key) => {
+var la_queryString = Object.keys(params).map((key) => {
   return encodeURIComponent(key) + '=' + encodeURIComponent(params[key])
 }).join('&');
-var targetUrl = `${baseUrl}${queryString}`;
+var la_targetUrl = `${la_baseUrl}${la_queryString}`;
 
 // call the api from new tab
-window.open(targetUrl);
+var la_a = document.createElement('a');
+la_a.href = targetUrl;
+la_a.target = "_blank";
+la_a.click();
