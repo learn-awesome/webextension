@@ -15,9 +15,14 @@ function setUpContextMenus() {
         var pageUrl = info.pageUrl;
         var answer = info.selectionText;
         var baseUrl = "https://learnawesome.org/flash_cards/new?";
-        var question = 'dummy question text';
-        var targetUrl = `${baseUrl}answer=${answer}&question=${question}&url=${pageUrl}`;
-        chrome.tabs.create({ url: targetUrl });
+        var question = '';
+        chrome.tabs.executeScript({
+          code: "window.getSelection().anchorNode.wholeText;"
+        }, function (selection) {
+          question = selection;
+          var targetUrl = `${baseUrl}answer=${answer}&question=${question}&url=${pageUrl}`;
+          chrome.tabs.create({ url: targetUrl });
+        });
       }
     });
   });

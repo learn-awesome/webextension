@@ -30,5 +30,12 @@
     "contextMenus",
     "tabs",
     "https://learnawesome.org/flash_cards/new"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["contextMenu.js"]
+    }
   ]
 }
