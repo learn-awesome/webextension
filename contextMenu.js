@@ -12,16 +12,14 @@ function setUpContextMenus() {
       id: 'flashCard',
       contexts: ['selection'],
       onclick: function (info, tab) {
-        var pageUrl = info.pageUrl;
-        var answer = info.selectionText;
-        var baseUrl = "https://learnawesome.org/flash_cards/new?";
-        var question = '';
+        var params = {
+          pageUrl: info.pageUrl,
+          answer: info.selectionText
+        };
         chrome.tabs.executeScript({
-          code: "window.getSelection().anchorNode.wholeText;"
-        }, function (selection) {
-          question = selection;
-          var targetUrl = `${baseUrl}answer=${answer}&question=${question}&url=${pageUrl}`;
-          chrome.tabs.create({ url: targetUrl });
+          code: 'var params = ' + JSON.stringify(params)
+        }, function () {
+          chrome.tabs.executeScript({ file: 'callAPI.js' })
         });
       }
     });

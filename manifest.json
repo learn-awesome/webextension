@@ -35,7 +35,7 @@
   "content_scripts": [
     {
       "matches": ["*://*/*"],
-      "js": ["contextMenu.js"]
+      "js": ["contextMenu.js", "callAPI.js"]
     }
   ]
 }
