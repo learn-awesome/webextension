@@ -1,6 +1,6 @@
 var CONTEXT_MENU_CONTENTS = {
   forSelection: [
-    'Save As Flashcard'
+    'Save as Flashcard on LearnAwesome.org'
   ]
 };
 
@@ -8,12 +8,12 @@ function setUpContextMenus() {
   CONTEXT_MENU_CONTENTS.forSelection.forEach(function (commandId) {
     chrome.contextMenus.create({
       type: "normal",
-      title: commandId + ' "%s"',
+      title: commandId,
       id: 'flashCard',
       contexts: ['selection'],
       onclick: function (info, tab) {
         var params = {
-          pageUrl: info.pageUrl,
+          url: info.pageUrl,
           answer: info.selectionText
         };
         chrome.tabs.executeScript({
