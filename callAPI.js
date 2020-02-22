@@ -1,7 +1,16 @@
 var la_baseUrl = "https://learnawesome.org/flash_cards/new?";
 
 var la_selectedValue = window.getSelection().anchorNode.wholeText;
-var la_parentSelection = window.getSelection().getRangeAt(0).startContainer.parentNode.previousSibling.innerText;
+var la_parentSelection = '';
+
+if (window.getSelection()
+  && window.getSelection().getRangeAt(0)
+  && window.getSelection().getRangeAt(0).startContainer
+  && window.getSelection().getRangeAt(0).startContainer.parentNode
+  && window.getSelection().getRangeAt(0).startContainer.parentNode.previousSibling
+  && window.getSelection().getRangeAt(0).startContainer.parentNode.previousSibling.innerText) {
+  la_parentSelection = window.getSelection().getRangeAt(0).startContainer.parentNode.previousSibling.innerText;
+}
 
 if (la_parentSelection) {
   params.question = la_parentSelection + ' ' + la_selectedValue;
