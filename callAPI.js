@@ -22,7 +22,6 @@ var la_queryString = Object.keys(params).map((key) => {
   return encodeURIComponent(key) + '=' + encodeURIComponent(params[key])
 }).join('&');
 var la_targetUrl = `${la_baseUrl}${la_queryString}`;
-alert(la_targetUrl);
 
 // call the api from new tab
 var la_a = document.createElement('a');
