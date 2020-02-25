@@ -1,5 +1,5 @@
-chrome.tabs.query({active:true,currentWindow:true},function(tabArray){
-    //console.log(tabArray[0].url);
+browser.tabs.query({active:true, currentWindow:true},function(tabArray){
+    // console.log(tabArray[0].url);
     var params = {
     	utf8: '',
     	q: tabArray[0].url,

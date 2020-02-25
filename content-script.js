@@ -13,18 +13,18 @@ if (window.getSelection()
 }
 
 if (la_parentSelection) {
-  params.question = la_parentSelection + ' ' + la_selectedValue;
+  la_params.question = la_parentSelection + ' ' + la_selectedValue;
 } else {
-  params.question = la_selectedValue;
+  la_params.question = la_selectedValue;
 }
 
-var la_queryString = Object.keys(params).map((key) => {
-  return encodeURIComponent(key) + '=' + encodeURIComponent(params[key])
+var la_queryString = Object.keys(la_params).map((key) => {
+  return encodeURIComponent(key) + '=' + encodeURIComponent(la_params[key])
 }).join('&');
 var la_targetUrl = `${la_baseUrl}${la_queryString}`;
 
-// call the api from new tab
-var la_a = document.createElement('a');
-la_a.href = la_targetUrl;
-la_a.target = "_blank";
-la_a.click();
+// open this URL in a new tab
+
+browser.runtime.sendMessage({url: la_targetUrl}, function (response) {
+  console.log(response.farewell);
+});
