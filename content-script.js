@@ -18,6 +18,8 @@ if (la_parentSelection) {
   la_params.question = la_selectedValue;
 }
 
+la_params.question = la_params.question.replace(la_params.answer, "___");
+
 var la_queryString = Object.keys(la_params).map((key) => {
   return encodeURIComponent(key) + '=' + encodeURIComponent(la_params[key])
 }).join('&');
@@ -25,6 +27,6 @@ var la_targetUrl = `${la_baseUrl}${la_queryString}`;
 
 // open this URL in a new tab
 
-browser.runtime.sendMessage({url: la_targetUrl}, function (response) {
+browser.runtime.sendMessage({url: la_targetUrl}).then(response => {
   console.log(response.farewell);
 });

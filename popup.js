@@ -1,4 +1,4 @@
-browser.tabs.query({active:true, currentWindow:true},function(tabArray){
+browser.tabs.query({active:true, currentWindow:true}).then(tabArray => {
     // console.log(tabArray[0].url);
     var params = {
     	utf8: '',
@@ -10,4 +10,4 @@ browser.tabs.query({active:true, currentWindow:true},function(tabArray){
     var query = Object.keys(params).map(k => esc(k) + '=' + esc(params[k])).join('&');
     var url = "https://learnawesome.org/items/search?" + query;
     document.getElementById('laiframe').src = url;
-});
+}).catch(console.error);

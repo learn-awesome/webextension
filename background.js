@@ -1,6 +1,6 @@
 var LA_CONTEXT_MENU_CONTENTS = {
   forSelection: [
-    'Save as Flashcard on LearnAwesome.org'
+    'Save as flashcard on LearnAwesome.org'
   ]
 };
 
@@ -18,9 +18,9 @@ function la_setUpContextMenus() {
         };
         browser.tabs.executeScript({
           code: 'var la_params = ' + JSON.stringify(params)
-        }, function () {
-          browser.tabs.executeScript({ file: 'content-script.js' })
         });
+        browser.tabs.executeScript({file: "browser-polyfill.js"});
+        browser.tabs.executeScript({ file: 'content-script.js' });
       }
     });
   });
@@ -41,7 +41,6 @@ function receiveMessage(request, sender, sendResponse) {
   console.log(request);
   var creating = browser.tabs.create({url: request.url});
   creating.then(onTabCreated, onTabError);
-  sendResponse({farewell: "goodbye"});
 }
 
 la_setUpContextMenus();
